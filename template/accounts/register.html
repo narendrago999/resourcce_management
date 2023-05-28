@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section>
+  <div class="sign-up">
+    
+    <article>
+      {% include 'includes/alert.html' %}
+      <header><h4 class="sign-up-title">Sign Up</h4></header>
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="signup-innerline">
+        <div
+        style="
+          background-color: white;
+          color: black;
+          width: max-content;
+          text-align: start;
+          margin: 0.2rem ;
+          opacity: 0.7;
+        "
+      >
+        {{ form.email.errors }}
+      </div>
+      <div
+        style="
+          background-color: white;
+          color: black;
+          width: max-content;
+          text-align: center;
+          margin: 0.5rem auto;
+          opacity: 0.7;
+        "
+      >
+        {{ form.non_field_errors }}
+      </div>
+        <div class="sign-up-fields">
+
+          <div class="field-box">
+            <label>First name</label>
+            {{ form.first_name }}
+          </div>
+          <div class="field-box">
+            <label>Last name</label>
+            {{ form.last_name }}
+          </div>
+        </div>
+        <div class="sign-up-fields">
+          <div class="field-box">
+            <label>Phone Number</label>
+            {{ form.phone_number}}
+          </div>
+          <div class="field-box">
+            <label>email</label>
+            {{ form.email }}
+          </div>
+        </div>
+        <div class="sign-up-fields">
+          <div class="field-box">
+            <label>Create password</label>
+            {{ form.password }}
+          </div>
+          <div class="field-box">
+            <label>Repeat password</label>
+            {{ form.confirm_password }}
+          </div>
+        </div>
+        
+        <div class="sign-up-submit">
+          <button type="submit">SignUp</button>
+        </div>
+        <div class="sign-up-done">
+          <p>Have an account? <a href="{% url 'login' %}">SignIn</a></p>
+        </div>
+        </div>
+      </form>
+    </article>
+  </div>
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock content %}

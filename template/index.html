@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% include 'includes/alert.html' %}
+<div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+  <div class="column" style="width: 50%;">
+    <h2>Available</h2>
+    <ul>
+      {% for data in data %}
+      <li class="product" id="{{data.id}}">
+        <h3>{{forloop.counter}}). {{data.name}}</h3>
+        <p>{{data.desc}}</p>
+        <p>Course Start on : {{data.start_date}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+  
+  
+  
+  <script src="/static/script.js"></script>
+</body>
+</html>
+
+{% endblock content %}

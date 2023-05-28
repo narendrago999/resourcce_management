@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section>
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+    {% if request.GET.command == 'verification' %}
+    <div class="sign-in-container">
+      Thank you for registration! Check email to verify account on [{{request.GET.email}}]
+      <br><br>
+    </div>
+      <div class="sign-in-submit">
+        Already verified ? 
+        <a href="{% url 'login' %}"><button> Login  </button></a>
+      </div>
+    
+    
+    {% else %}    
+    <div class="sign-up">
+          <div  class="sign-in">
+          <h4 class="sign-up-title">Sign in</h4>
+          {% include 'includes/alert.html' %}
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="signup-innerline">
+
+              <div class="field-box">
+                <label>Email Address</label>
+                <input type="email"  placeholder="Email Address" name="email">
+              </div>
+              <div class="field-box">
+                <label>Password</label>
+                <input type="password"  placeholder="Password" name="password">
+              </div>
+              
+              <div class="sign-up-submit">
+                <button type="submit" > Login  </button>
+              </div> 
+              <div class="forgot-password">
+                  <a href="{% url 'forgotPassword' %}" >Click here if you do not remember password !!</a> 
+               
+              </div> 
+              <div class="sign-up-done">
+                <p >Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
+               </div>
+            </div>  
+          </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+        
+         <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+    {% endif %}
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+{% endblock content %}
+    
